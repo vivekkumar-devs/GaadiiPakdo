@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.GaadiiPakdo" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Dark background for status bar -->
+        <item name="android:statusBarColor">#121212</item>
+
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
+    </style>
+
+</resources>

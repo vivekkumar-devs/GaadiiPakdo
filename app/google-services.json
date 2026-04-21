@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1015614394024",
+    "firebase_url": "https://gaadiipakdo-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "gaadiipakdo",
+    "storage_bucket": "gaadiipakdo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015614394024:android:52936ba72eec7565dfbc9d",
+        "android_client_info": {
+          "package_name": "vivek.harman.gaadiipakdo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015614394024-m3pqq36qshpe1qppv9o0lvkbjnu213ma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQr79YRtZfd384V1ynabzevD07rkkDtME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015614394024-m3pqq36qshpe1qppv9o0lvkbjnu213ma.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

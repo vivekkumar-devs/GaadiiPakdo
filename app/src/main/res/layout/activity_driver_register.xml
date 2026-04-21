@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="40dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Driver Registration"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:gravity="center"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register to start your journey"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Name -->
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:background="@drawable/edit_bg"
+            android:padding="14dp"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Vehicle -->
+        <EditText
+            android:id="@+id/etVehicle"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Vehicle Number"
+            android:inputType="textCapCharacters"
+            android:background="@drawable/edit_bg"
+            android:padding="14dp"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Capacity -->
+        <EditText
+            android:id="@+id/etcapacity"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Vehicle Capacity"
+            android:inputType="textCapCharacters"
+            android:background="@drawable/edit_bg"
+            android:padding="14dp"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/etidd"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Email ID"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/edit_bg"
+            android:padding="14dp"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Password -->
+        <EditText
+            android:id="@+id/etpassworrd"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:background="@drawable/edit_bg"
+            android:padding="14dp"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Confirm Password -->
+        <EditText
+            android:id="@+id/etconforrmmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:background="@drawable/edit_bg"
+            android:padding="14dp"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:textSize="15sp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Register Button -->
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Register"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:backgroundTint="#FFC107"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Login Link -->
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Already have an account? Login"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</ScrollView>

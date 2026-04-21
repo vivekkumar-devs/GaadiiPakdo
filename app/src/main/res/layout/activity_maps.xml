@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- MAP -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 🔙 Back Button -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/bg_circle_white"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:elevation="8dp"
+        android:padding="12dp" />
+
+    <!-- 🚪 Logout -->
+    <ImageButton
+        android:id="@+id/btnLogout"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="top|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/bg_circle_white"
+        android:src="@drawable/ic_logout"
+        android:elevation="8dp"
+        android:padding="12dp" />
+
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Waiting for vehicle..."
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:background="@drawable/bg_status_pill"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:gravity="center"
+        android:elevation="10dp"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="70dp" />
+
+    <!-- 🚗 DRIVER CARD -->
+    <LinearLayout
+        android:id="@+id/vehicleCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="108dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_card_white"
+        android:elevation="10dp"
+        android:padding="14dp"
+        android:gravity="center_vertical">
+
+        <!-- DRIVER ICON -->
+        <ImageView
+            android:id="@+id/imgDriver"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:src="@drawable/driverimg11"
+            android:layout_marginEnd="12dp" />
+
+        <!-- TEXT INFO -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtDriverName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driver Name: --"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/txtVehicleNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vehicle No: --"
+                android:textColor="#444"
+                android:layout_marginTop="2dp"/>
+
+            <TextView
+                android:id="@+id/txtCapacity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capacity: --"
+                android:textColor="#444"
+                android:layout_marginTop="2dp"/>
+
+            <TextView
+                android:id="@+id/txtLastUpdated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Updated: --"
+                android:textColor="#888"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- 📏 DISTANCE + ETA CARD -->
+    <LinearLayout
+        android:id="@+id/infoCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_card_white"
+        android:elevation="8dp"
+        android:padding="16dp"
+        android:weightSum="2">
+
+        <!-- Distance -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Distance"
+                android:textSize="12sp"
+                android:textColor="#777"/>
+
+            <TextView
+                android:id="@+id/distanceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000"/>
+        </LinearLayout>
+
+        <!-- ETA -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Average Time"
+                android:textSize="12sp"
+                android:textColor="#777"/>
+
+            <TextView
+                android:id="@+id/timeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

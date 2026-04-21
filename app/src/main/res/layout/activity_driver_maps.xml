@@ -1,0 +1,157 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- FULL SCREEN MAP -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapdriver"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 🔙 BACK BUTTON -->
+    <ImageButton
+        android:id="@+id/bbtnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/bg_circle_white"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:elevation="8dp"
+        android:padding="12dp" />
+
+    <!-- 🚪 LOGOUT BUTTON -->
+    <ImageButton
+        android:id="@+id/btonLogout"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/bg_circle_white"
+        android:src="@drawable/ic_logout"
+        android:elevation="8dp"
+        android:padding="12dp" />
+
+    <!-- STATUS -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Waiting for passanger..."
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:background="@drawable/bg_status_pill"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:elevation="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"/>
+
+    <!-- DRIVER CARD -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/driverCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp">
+
+            <!-- DRIVER IMAGE -->
+            <ImageView
+                android:id="@+id/imgDriver"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/driverimg11"
+                android:padding="10dp" />
+
+            <!-- NAME -->
+            <TextView
+                android:id="@+id/txtDriverName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driver Name"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:gravity="center"/>
+
+            <!-- VEHICLE -->
+            <TextView
+                android:id="@+id/txtVehicle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vehicle No"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"/>
+
+            <!-- CAPACITY -->
+            <TextView
+                android:id="@+id/txtCapacity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seats"
+                android:textSize="13sp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"/>
+
+
+            <!-- ⭐ STARS (FIXED SIZE) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:src="@drawable/ic_star"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="fitCenter"/>
+
+                <ImageView
+                    android:src="@drawable/ic_star"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="fitCenter"/>
+
+                <ImageView
+                    android:src="@drawable/ic_star"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="fitCenter"/>
+
+                <ImageView
+                    android:src="@drawable/ic_star"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="fitCenter"/>
+
+                <ImageView
+                    android:src="@drawable/ic_star"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="fitCenter"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
