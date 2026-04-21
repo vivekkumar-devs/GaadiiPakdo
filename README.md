@@ -41,8 +41,8 @@ A real-time transport tracking Android application that connects users and drive
 ---
 
 ## 📫 Connect With Me
-- LinkedIn: (add your link)
-- Email: (your email)
+- LinkedIn: www.linkedin.com/in/vivek-kumar-235671362
+- Email: vivekyadav7480@gmail.com
 
 ---
 
