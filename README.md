@@ -1,16 +1,49 @@
-## Hi there 👋
+# Hi, I'm Vivek Kumar 👋
 
-<!--
-**vivekkumar-devs/vivekkumar-devs** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+🎓 MCA Student at DIT University  
+💻 Android Developer | Java | Firebase  
+📍 Interested in Real-Time Systems & Mobile Applications  
 
-Here are some ideas to get you started:
+---
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## 🚀 Project: GaadiiPakdo
+
+A real-time transport tracking Android application that connects users and drivers on a live map.
+
+### 🔧 Features
+- Single app with role-based access (User & Driver)
+- Real-time location tracking using Firebase
+- Live map integration (OSMDroid)
+- Distance and ETA estimation
+- Driver profile system
+
+### 🛠 Tech Stack
+- Java
+- Android SDK
+- Firebase Realtime Database
+- OSMDroid
+- GPS Location Services
+
+### 📱 How It Works
+- Drivers broadcast live location
+- Users can track nearby vehicles in real-time
+
+---
+
+## 📌 Skills
+- Android Development
+- Java
+- Firebase
+- Real-Time Systems
+- GPS & Location Services
+- UI/UX Design
+
+---
+
+## 📫 Connect With Me
+- LinkedIn: (add your link)
+- Email: (your email)
+
+---
+
+⭐ Currently improving GaadiiPakdo with advanced features
