@@ -1,4 +1,9 @@
-# 🚗 GaadiiPakdo
+
+<p align="center">
+ <img src="https://github.com/user-attachments/assets/40b303ab-93af-417c-ae3c-0d61cc2879e2"
+ alt="GAADIIPAKDO Logo"
+ width="40%">
+</p>
 
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?size=24&duration=3000&color=00F7FF&center=true&vCenter=true&width=700&lines=Real-Time+Transport+Tracking+Platform;Android+%7C+Java+%7C+Firebase;Role-Based+User+%26+Driver+System;Built+and+Tested+Under+Live+Conditions" />
@@ -109,6 +114,8 @@ Firebase Realtime Database
 
 <p align="center">
   <img width="250" height="550" alt="welcomepage" src="https://github.com/user-attachments/assets/eca1feda-524e-4c52-bf86-f476fc9a84fd" />
+  <img width="250" height="550" alt="userlogin" src="https://github.com/user-attachments/assets/39d81013-8572-4929-afdf-458d57a47c89" />
+
 </p>
 
 ### User & Driver Experience
