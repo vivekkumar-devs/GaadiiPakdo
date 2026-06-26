@@ -103,32 +103,23 @@ Firebase Realtime Database
 
 ---
 
-## 🎥 Application Demo
-
-> Add your demo GIF here
-
-```html
-<p align="center">
-  <img src="demo.gif" width="320"/>
-</p>
-```
-
----
-
 ## 📸 Screenshots
 
 ### Login & Authentication
 
 <p align="center">
-  <img src="screenshots/login.png" width="250"/>
-  <img src="screenshots/forgot_password.png" width="250"/>
+  <img width="250" height="550" alt="welcomepage" src="https://github.com/user-attachments/assets/eca1feda-524e-4c52-bf86-f476fc9a84fd" />
 </p>
 
 ### User & Driver Experience
 
 <p align="center">
-  <img src="screenshots/user_map.png" width="250"/>
-  <img src="screenshots/driver_map.png" width="250"/>
+  <img width="250" height="550" alt="nodriveravailable" src="https://github.com/user-attachments/assets/78defb07-e13d-452f-852e-8f925e0235c6" />
+  
+ <img width="250" height="550" alt="userdashboard" src="https://github.com/user-attachments/assets/4bec50c1-687d-4f36-9318-07631121c833" />
+
+ <img width="250" height="550" alt="driverdashboard" src="https://github.com/user-attachments/assets/30767933-b695-4376-9a69-74edf801bbec" />
+
 </p>
 
 ---
