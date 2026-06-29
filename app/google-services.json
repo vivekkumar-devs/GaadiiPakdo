@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1015614394024-7852hqk4d2v709eeko692e589hbkda5d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vivek.harman.gaadiipakdo",
+            "certificate_hash": "5e5518c3447bd4bab2f101b71e30f9db99eddf6b"
+          }
+        },
+        {
           "client_id": "1015614394024-m3pqq36qshpe1qppv9o0lvkbjnu213ma.apps.googleusercontent.com",
           "client_type": 3
         }

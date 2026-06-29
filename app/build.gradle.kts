@@ -1,8 +1,9 @@
 plugins {
     id("com.android.application")
 
-    // ✅ Firebase plugin
+    // Firebase
     id("com.google.gms.google-services")
+
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
@@ -23,6 +24,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -42,6 +44,10 @@ android {
 
 dependencies {
 
+    // =========================
+    // AndroidX
+    // =========================
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -49,33 +55,52 @@ dependencies {
 
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.cardview:cardview:1.0.0")
-
-    implementation("com.google.android.material:material:1.11.0")
-
-    // ✅ osmdroid (Map)
-    implementation("org.osmdroid:osmdroid-android:6.1.16")
-
-    // ✅ PreferenceManager (required)
     implementation("androidx.preference:preference:1.2.1")
 
+
+
+
+
+
+
     // =========================
-    // ✅ Firebase (FIXED)
+    // Material Design
     // =========================
 
-    // BoM (manages versions automatically)
-    implementation(platform("com.google.firebase:firebase-bom:34.11.0"))
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+    implementation("com.airbnb.android:lottie:6.4.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
-    // 🔥 REQUIRED for your current code
-    implementation("com.google.firebase:firebase-database")
+    // =========================
+    // Maps
+    // =========================
 
-    // Optional (keep if needed)
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-analytics")
+    implementation("org.osmdroid:osmdroid-android:6.1.16")
     implementation(libs.play.services.maps)
 
     // =========================
+    // Firebase
+    // =========================
+
+    // Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:34.11.0"))
+
+    // Firebase Authentication
+    implementation("com.google.firebase:firebase-auth")
+
+    // Firebase Realtime Database
+    implementation("com.google.firebase:firebase-database")
+
+    // Firebase Analytics
+    implementation("com.google.firebase:firebase-analytics")
+
+    // =========================
+    // Testing
+    // =========================
 
     testImplementation(libs.junit)
+
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }

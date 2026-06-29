@@ -1,18 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.Theme.GaadiiPakdo" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Base Theme -->
+    <style name="Base.Theme.GaadiiPakdo"
+        parent="Theme.Material3.Light.NoActionBar">
 
-        <!-- ✅ FORCE visible status bar -->
-        <item name="android:statusBarColor">#F5F7FA</item>
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/bg_main</item>
+        <item name="android:windowLightStatusBar">true</item>
 
-        <!-- ✅ Prevent fullscreen -->
+        <!-- Navigation Bar -->
+        <item name="android:navigationBarColor">@color/card_bg</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- Window -->
         <item name="android:windowFullscreen">false</item>
-
-        <!-- ✅ Ensure system UI is not drawn behind -->
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowContentTransitions">true</item>
+
+        <!-- Material Colors -->
+        <item name="colorPrimary">@color/primary_orange</item>
+        <item name="colorPrimaryContainer">@color/primary_orange_light</item>
+
+        <item name="colorSecondary">@color/primary_orange</item>
+        <item name="colorSecondaryContainer">@color/primary_orange_light</item>
+
+        <!-- Material Surface -->
+        <item name="colorSurface">@color/card_bg</item>
+
+        <!-- Text -->
+        <item name="android:textColorPrimary">@color/text_dark</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+
+        <!-- Material Components -->
+        <item name="materialCardViewStyle">@style/AppMaterialCard</item>
 
     </style>
 
-    <style name="Theme.GaadiiPakdo" parent="Base.Theme.GaadiiPakdo" />
+    <!-- Main Theme -->
+    <style name="Theme.GaadiiPakdo"
+        parent="Base.Theme.GaadiiPakdo" />
+
+    <!-- Global Card Style -->
+    <style name="AppMaterialCard"
+        parent="Widget.Material3.CardView.Elevated">
+
+        <item name="cardCornerRadius">24dp</item>
+        <item name="cardElevation">8dp</item>
+
+    </style>
 
 </resources>

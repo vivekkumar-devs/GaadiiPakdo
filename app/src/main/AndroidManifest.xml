@@ -2,18 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- ===== PERMISSIONS ===== -->
+    <!-- ========================= -->
+    <!-- Permissions -->
+    <!-- ========================= -->
+
+
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <!-- Location -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <!-- Optional but recommended for better GPS -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
+    <!-- Optional GPS -->
     <uses-feature android:name="android.hardware.location.gps" />
 
-    <!-- ===== APPLICATION ===== -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,57 +28,97 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GaadiiPakdo"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
 
+        <!-- ========================= -->
         <!-- Firebase -->
+        <!-- ========================= -->
+
         <meta-data
             android:name="firebase_database_url"
             android:value="https://gaadiipakdo-default-rtdb.asia-southeast1.firebasedatabase.app/" />
 
+        <!-- ========================= -->
         <!-- OSMDroid -->
+        <!-- ========================= -->
+
         <meta-data
             android:name="org.osmdroid.config.userAgentValue"
             android:value="GaadiiPakdoApp" />
 
-        <!-- ===== ACTIVITIES ===== -->
+        <!-- ========================= -->
+        <!-- Activities -->
+        <!-- ========================= -->
 
-        <!-- ✅ Driver Map (FIX APPLIED HERE) -->
         <activity
-            android:name=".DriverMapsActivity"
+            android:name=".OTP_Activity"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
+
+        <activity
+            android:name=".Reset_Password_Activity"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
+
+        <activity
+            android:name=".Forgot_Password_Activity"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
+
+        <activity
+            android:name=".User_Register_Activity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Driver_Register_Activity"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
+
+        <activity
+            android:name=".Driver_Maps_Activity"
             android:exported="false"
             android:theme="@style/Theme.GaadiiPakdo" />
 
-        <!-- Other activities -->
         <activity
-            android:name=".DriverRegisterActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".MapsActivity"
+            android:name=".User_Maps_Activity"
             android:exported="false"
             android:theme="@style/Theme.GaadiiPakdo" />
 
         <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
+            android:name=".Driver_Login_Activity"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false"/>
+
 
         <activity
-            android:name=".DriverActivity"
+            android:name=".User_Login_Activity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
 
-        <activity
-            android:name=".UserActivity"
-            android:exported="false" />
 
-        <!-- Launcher -->
+
+
+        <!-- ========================= -->
+        <!-- Launcher Activity -->
+        <!-- ========================= -->
+
         <activity
-            android:name=".MainActivity"
+
+            android:name=".Welcome_Activity"
             android:exported="true">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+
+
 
     </application>
 

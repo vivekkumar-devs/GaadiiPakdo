@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F9FF">
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/footerCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="50dp"
+            android:focusableInTouchMode="true"
+            android:paddingBottom="40dp">
+            <!-- HERO -->
+
+            <ImageView
+                android:id="@+id/imgDriver"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/driverlogin1" />
+
+            <!-- LOGIN CARD -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Driver Login"
+                        android:textStyle="bold"
+                        android:textSize="22sp"
+                        android:textColor="#0C1B57"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Sign in to continue your journey"
+                        android:textColor="#7B859F"
+                        android:textSize="14sp"
+                        android:layout_marginTop="6dp"/>
+
+                    <!-- PHONE -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/bg_input"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="14dp">
+                        <FrameLayout
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/bg_call_and_security"
+                            android:padding="3dp">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/call_icon_hd"/>
+                        </FrameLayout>
+                        <EditText
+                            android:id="@+id/etDriverPhone"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:background="@android:color/transparent"
+                            android:hint="Phone Number"
+                            android:maxLines="1"
+                            android:inputType="phone"
+                            android:textColor="#000"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+
+                    <!-- PASSWORD -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/bg_input"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="14dp">
+
+                        <FrameLayout
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/bg_call_and_security"
+                            android:padding="3dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/security_hd_icon"/>
+
+                        </FrameLayout>
+
+                        <EditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:background="@android:color/transparent"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:textSize="15sp"/>
+
+                        <ImageView
+                            android:id="@+id/driverPasswordToggle"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:padding="2dp"
+                            android:src="@drawable/ic_visibility"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/forgotPasswordText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="15dp"
+                        android:text="Forgot Password?"
+                        android:textColor="#2563FF"/>
+
+                    <Button
+                        android:id="@+id/btnLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="18dp"
+                        android:text="Login"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:backgroundTint="#2563FF"/>
+
+                    <TextView
+                        android:id="@+id/tvRegister"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="25dp"
+                        android:text="Don't have an account? Sign Up"
+                        android:textColor="#5F6A85"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+    <!-- Fixed Footer -->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/footerCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="19dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#F4F8FF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="1dp">
+
+            <!-- SAFE -->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="1dp">
+
+                <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/bg_blue_box"
+                    android:padding="2dp">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_shield_login"/>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Safe"
+                        android:textColor="#0C1B57"
+                        android:textSize="10sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your Safety&#10;Is Our Priority"
+                        android:textColor="#50607D"
+                        android:textSize="5sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="34dp"
+                android:background="#DCE5F7"/>
+
+            <!-- FAST -->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp">
+
+                <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/bg_blue_box"
+                    android:padding="2dp">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_flash"/>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fast"
+                        android:textColor="#0C1B57"
+                        android:textSize="10sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quick Rides,&#10;Save Time"
+                        android:textColor="#50607D"
+                        android:textSize="5sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="34dp"
+                android:background="#DCE5F7"/>
+
+            <!-- RELIABLE -->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp">
+
+                <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/bg_blue_box"
+                    android:padding="2dp">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/hd_icon2"/>
+                </FrameLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reliable"
+                        android:textColor="#0C1B57"
+                        android:textSize="10sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dependable Rides,&#10;Everytime"
+                        android:textColor="#50607D"
+                        android:textSize="5sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

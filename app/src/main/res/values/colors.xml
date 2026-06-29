@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bg_main">#EDE6DD</color>
-    <color name="card_bg">#FFFFFF</color>
+
     <color name="primary_orange">#FF7A00</color>
-    <color name="text_dark">#2B2B2B</color>
-    <color name="text_hint">#A9A9A9</color>
-    <color name="text_secondary">#6B6B6B</color>
+    <color name="primary_orange_dark">#E56E00</color>
+    <color name="primary_orange_light">#FFF2E5</color>
+
+    <color name="bg_main">#F5F9FF</color>
+    <color name="primary_blue">#2196F3</color>
+    <color name="secondary_blue">#42A5F5</color>
+    <color name="text_dark">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="driver_card_bg">#2563FF</color>
 </resources>

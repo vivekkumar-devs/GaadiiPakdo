@@ -1,36 +1,42 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="48dp"
-    android:height="48dp"
-    android:viewportWidth="48"
-    android:viewportHeight="48">
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
 
-    <!-- Outer highlight circle -->
+    <!-- Shadow -->
     <path
-        android:fillColor="#33FFD54F"
-        android:pathData="M24,4a20,20 0,1 1,0 40a20,20 0,1 1,0 -40"/>
+        android:fillColor="#22000000"
+        android:pathData="M32,58c8,0 14,-2 14,-5s-6,-5 -14,-5s-14,2 -14,5s6,5 14,5z"/>
 
-    <!-- Inner solid circle -->
+    <!-- Pin -->
     <path
         android:fillColor="#FFC107"
-        android:pathData="M24,10a14,14 0,1 1,0 28a14,14 0,1 1,0 -28"/>
+        android:pathData="M32,4C21,4 12,13 12,24c0,14 20,34 20,34s20,-20 20,-34C52,13 43,4 32,4z"/>
 
-    <!-- Car body -->
+    <!-- White Circle -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M18,18h12c1,0 2,1 2,2v8c0,1 -1,2 -2,2H18c-1,0 -2,-1 -2,-2v-8c0,-1 1,-2 2,-2z"/>
+        android:pathData="M32,14a10,10 0 1,1 0,20a10,10 0 1,1 0,-20"/>
 
-    <!-- Car roof -->
+    <!-- Taxi Body -->
     <path
-        android:fillColor="#FFF9C4"
-        android:pathData="M20,20h8c1,0 1,1 1,1v4c0,1 -1,1 -1,1h-8c-1,0 -1,-1 -1,-1v-4c0,-1 1,-1 1,-1z"/>
+        android:fillColor="#FFC107"
+        android:pathData="M24,28h16c1,0 2,1 2,2v4h-2c0,1 -1,2 -2,2s-2,-1 -2,-2h-8c0,1 -1,2 -2,2s-2,-1 -2,-2h-2v-4c0,-1 1,-2 2,-2z"/>
 
-    <!-- Wheels (converted from circle to path) -->
+    <!-- Roof -->
     <path
-        android:fillColor="#000000"
-        android:pathData="M20,30a1.5,1.5 0 1,0 0.01,0z"/>
+        android:fillColor="#FFC107"
+        android:pathData="M28,24h8l2,3H26z"/>
 
+    <!-- Wheels -->
+    <!-- Left Wheel -->
     <path
-        android:fillColor="#000000"
-        android:pathData="M28,30a1.5,1.5 0 1,0 0.01,0z"/>
+        android:fillColor="#FFFFFF"
+        android:pathData="M27,34m-1.5,0a1.5,1.5 0 1,0 3,0a1.5,1.5 0 1,0 -3,0"/>
 
+    <!-- Right Wheel -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M37,34m-1.5,0a1.5,1.5 0 1,0 3,0a1.5,1.5 0 1,0 -3,0"/>
 </vector>
