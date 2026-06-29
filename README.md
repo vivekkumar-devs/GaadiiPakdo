@@ -124,6 +124,16 @@ Firebase Realtime Database
 
 ### Password Recovery
 
+<p align="center">
+ 
+<img width="250" height="550" alt="otppage" src="https://github.com/user-attachments/assets/37df8895-1d01-462c-948b-6b04bb41da34" />
+
+ <img width="250" height="550" alt="otpverification" src="https://github.com/user-attachments/assets/af5d6adc-4c64-4204-906b-eb04140e8676" />
+
+<img width="250" height="550" alt="resetpassword" src="https://github.com/user-attachments/assets/4b6d8a4f-b859-4a5b-a4ea-da4525d4140d" />
+
+</p>
+
 ### User & Driver Experience
 
 <p align="center">
