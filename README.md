@@ -528,13 +528,11 @@ Drivers
 
 <p align="center">
 
-<img width="300"  src="https://github.com/user-attachments/assets/43554f34-c672-4c8b-87e8-2b758f26c300" />
+<img width="250"  src="https://github.com/user-attachments/assets/43554f34-c672-4c8b-87e8-2b758f26c300" />
 
+<img width="250" src="https://github.com/user-attachments/assets/6e555019-21f0-4a41-a44b-51ae824c9e19" />
 
-
-<img width="300" src="https://github.com/user-attachments/assets/6e555019-21f0-4a41-a44b-51ae824c9e19" />
-
-<img width="300" src="https://github.com/user-attachments/assets/5249b058-8293-4d06-9810-8bd9fb99a2df" />
+<img width="250" src="https://github.com/user-attachments/assets/5249b058-8293-4d06-9810-8bd9fb99a2df" />
 
 
 
