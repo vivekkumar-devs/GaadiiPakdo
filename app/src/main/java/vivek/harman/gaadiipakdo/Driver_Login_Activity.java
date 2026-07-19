@@ -321,10 +321,10 @@ public class Driver_Login_Activity extends AppCompatActivity {
                             @NonNull DataSnapshot snapshot
                     ) {
 
-                        boolean found = false;
+                        boolean phoneFound = false;
+                        boolean loginSuccess = false;
 
-                        for (DataSnapshot data :
-                                snapshot.getChildren()) {
+                        for (DataSnapshot data : snapshot.getChildren()) {
 
                             String dbPhone =
                                     data.child("phone")
@@ -335,95 +335,84 @@ public class Driver_Login_Activity extends AppCompatActivity {
                                             .getValue(String.class);
 
                             if (dbPhone != null &&
-                                    dbPassword != null &&
-                                    dbPhone.equals(phone) &&
-                                    dbPassword.equals(pass)) {
+                                    dbPhone.equals(phone)) {
 
-                                found = true;
+                                phoneFound = true;
 
-                                String driverId = data.getKey();
+                                if (dbPassword != null &&
+                                        dbPassword.equals(pass)) {
 
-                                String sessionToken =
-                                        java.util.UUID.randomUUID().toString();
-                                android.util.Log.d(
-                                        "LOGIN_TOKEN",
-                                        "Generated Token = " + sessionToken
-                                );
+                                    loginSuccess = true;
 
-                                data.getRef()
-                                        .child("sessionToken")
-                                        .setValue(sessionToken);
+                                    String driverId = data.getKey();
 
-                                android.util.Log.d(
-                                        "LOGIN_TOKEN",
-                                        "Saved Token = " + sessionToken
-                                );
+                                    String sessionToken =
+                                            java.util.UUID.randomUUID().toString();
 
-                                // =========================
-                                // SAVE SESSION
-                                // =========================
+                                    android.util.Log.d(
+                                            "LOGIN_TOKEN",
+                                            "Generated Token = " + sessionToken
+                                    );
 
-                                SharedPreferences.Editor editor =
-                                        getSharedPreferences(
-                                                "app",
-                                                MODE_PRIVATE
-                                        ).edit();
+                                    data.getRef()
+                                            .child("sessionToken")
+                                            .setValue(sessionToken);
 
-                                editor.putBoolean(
-                                        "isLoggedIn",
-                                        true
-                                );
+                                    SharedPreferences.Editor editor =
+                                            getSharedPreferences(
+                                                    "app",
+                                                    MODE_PRIVATE
+                                            ).edit();
 
-                                editor.putString(
-                                        "role",
-                                        "driver"
-                                );
+                                    editor.putBoolean("isLoggedIn", true);
 
-                                editor.putString(
-                                        "phone",
-                                        phone
-                                );
+                                    editor.putString("role", "driver");
 
-                                editor.putString(
-                                        "driverId",
-                                        driverId
-                                );
-                                        editor.putString(
-                                                "sessionToken",
-                                                sessionToken
-                                        );
+                                    editor.putString("phone", phone);
 
+                                    editor.putString("driverId", driverId);
 
+                                    editor.putString("sessionToken", sessionToken);
 
-                                editor.putString(
-                                        "driverKey",
-                                        driverId
-                                );
+                                    editor.putString("driverKey", driverId);
 
+                                    editor.apply();
 
-                                editor.apply();
+                                    Toast.makeText(
+                                            Driver_Login_Activity.this,
+                                            "Login Successful",
+                                            Toast.LENGTH_SHORT
+                                    ).show();
 
-                                Toast.makeText(
-                                        Driver_Login_Activity.this,
-                                        "Login Successful",
-                                        Toast.LENGTH_SHORT
-                                ).show();
+                                    goToDriverMap();
 
-                                goToDriverMap();
-
-                                break;
+                                    break;
+                                }
                             }
                         }
 
                         btnLogin.setEnabled(true);
 
-                        if (!found) {
+                        btnLogin.setEnabled(true);
 
-                            Toast.makeText(
-                                    Driver_Login_Activity.this,
-                                    "Invalid Phone or Password",
-                                    Toast.LENGTH_SHORT
-                            ).show();
+                        if (!loginSuccess) {
+
+                            if (!phoneFound) {
+
+                                Toast.makeText(
+                                        Driver_Login_Activity.this,
+                                        "Phone number not registered",
+                                        Toast.LENGTH_SHORT
+                                ).show();
+
+                            } else {
+
+                                Toast.makeText(
+                                        Driver_Login_Activity.this,
+                                        "Incorrect password",
+                                        Toast.LENGTH_SHORT
+                                ).show();
+                            }
                         }
                     }
 

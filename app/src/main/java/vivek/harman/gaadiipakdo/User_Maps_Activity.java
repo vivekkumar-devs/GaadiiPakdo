@@ -33,10 +33,21 @@ import com.google.firebase.database.*;
 import androidx.annotation.NonNull;
 import android.net.Uri;
 import android.widget.Toast;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 
 public class User_Maps_Activity extends AppCompatActivity {
 
     private MapView map;
+    private DrawerLayout drawerLayout;
+    private TextView txtDrawerName;
+    private TextView txtDrawerPhone, txtSpeed;
+    private TextView tvUserName;
+    private TextView tvUserPhone;
+
+    private View contactLayout;
+    private View aboutLayout;
+    private View logoutLayout;
     private boolean driversLoaded = false;
     private String driverPhone = "";
     private LocationManager locationManager;
@@ -49,8 +60,6 @@ public class User_Maps_Activity extends AppCompatActivity {
     private DatabaseReference sessionRef;
 
     private ValueEventListener sessionListener;
-
-    private boolean isLoggingOut = false;
 
     private Polyline routeOuter;
     private final List<Marker> routeDots = new ArrayList<>();
@@ -82,12 +91,24 @@ public class User_Maps_Activity extends AppCompatActivity {
 
         setContentView(R.layout.activity_user_maps);
 
+// =============================
+        // STATUS BAR
+        // =============================
+        getWindow().setStatusBarColor(
+                Color.WHITE
+        );
+        getWindow().getDecorView()
+                .setSystemUiVisibility(
+                        View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                );
 
 
         View root = findViewById(android.R.id.content);
+        txtDrawerName = findViewById(R.id.txtUserName);
+        txtDrawerPhone = findViewById(R.id.txtUserPhone);
+
 
         ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
-
             Insets systemBars =
                     insets.getInsets(WindowInsetsCompat.Type.systemBars());
 
@@ -100,6 +121,7 @@ public class User_Maps_Activity extends AppCompatActivity {
 
             return insets;
         });
+
 
         vehicleCard = findViewById(R.id.vehicleCard);
         infoCard = findViewById(R.id.infoCard);
@@ -124,65 +146,53 @@ public class User_Maps_Activity extends AppCompatActivity {
             }
         });
 
-        getWindow().setStatusBarColor(Color.WHITE);
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+
+        drawerLayout = findViewById(R.id.drawerLayout);
+        tvUserName = findViewById(R.id.txtUserName);
+        tvUserPhone = findViewById(R.id.txtUserPhone);
+
+        contactLayout = findViewById(R.id.menuContact);
+        aboutLayout = findViewById(R.id.menuAbout);
+        logoutLayout = findViewById(R.id.menuLogout);
+
+        ImageButton btnMenu = findViewById(R.id.btnBack);
+
+        btnMenu.setOnClickListener(v ->
+                drawerLayout.openDrawer(androidx.core.view.GravityCompat.START)
         );
+        contactLayout.setOnClickListener(v -> {
 
-        ImageButton btnBack = findViewById(R.id.btnBack);
-        if (btnBack != null) {
-            btnBack.setOnClickListener(v -> {
-                startActivity(new Intent(User_Maps_Activity.this, Welcome_Activity.class));
-                finish();
-            });
-        }
+            drawerLayout.closeDrawers();
 
-        ImageButton btnLogout = findViewById(R.id.btnLogout);
+            Toast.makeText(
+                    this,
+                    "Contact: support@gaadiipakdo.com",
+                    Toast.LENGTH_LONG
+            ).show();
 
-        if (btnLogout != null) {
+        });
 
-            btnLogout.setOnClickListener(v -> {
+        aboutLayout.setOnClickListener(v -> {
 
-                isLoggingOut = true;
+            drawerLayout.closeDrawers();
 
-                SharedPreferences prefs =
-                        getSharedPreferences("app", MODE_PRIVATE);
+            Toast.makeText(
+                    this,
+                    "GaadiiPakdo\nVersion 1.0.0",
+                    Toast.LENGTH_LONG
+            ).show();
 
-                String userKey =
-                        prefs.getString("userKey", "");
+        });
 
-                // Remove session token from Firebase
-                if (!userKey.isEmpty()) {
+        logoutLayout.setOnClickListener(v -> {
 
-                    FirebaseDatabase.getInstance()
-                            .getReference("Users")
-                            .child(userKey)
-                            .child("sessionToken")
-                            .setValue("");
+            drawerLayout.closeDrawers();
 
-                }
+            logoutUser();
 
-                // Clear local session
-                prefs.edit()
-                        .clear()
-                        .apply();
+        });
 
-                // Open Login Screen
-                Intent intent = new Intent(
-                        User_Maps_Activity.this,
-                        User_Login_Activity.class
-                );
 
-                intent.setFlags(
-                        Intent.FLAG_ACTIVITY_NEW_TASK |
-                                Intent.FLAG_ACTIVITY_CLEAR_TASK
-                );
-
-                startActivity(intent);
-
-                finish();
-            });
-        }
 
         map = findViewById(R.id.map);
         noDriverLayout = findViewById(R.id.noDriverLayout);
@@ -233,7 +243,9 @@ public class User_Maps_Activity extends AppCompatActivity {
         txtLastUpdated = findViewById(R.id.txtLastUpdated);
         distanceText = findViewById(R.id.distanceText);
         timeText = findViewById(R.id.timeText);
+        txtSpeed = findViewById(R.id.txtSpeed);
         txtStatus = findViewById(R.id.txtStatus);
+
 
         driversRef = FirebaseDatabase
                 .getInstance("https://gaadiipakdo-default-rtdb.asia-southeast1.firebasedatabase.app")
@@ -243,6 +255,46 @@ public class User_Maps_Activity extends AppCompatActivity {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         checkPermission();
+        loadUserProfile();
+
+    }
+    private void loadUserProfile() {
+
+        SharedPreferences prefs =
+                getSharedPreferences("app", MODE_PRIVATE);
+
+        String userKey =
+                prefs.getString("userKey","");
+
+        if(userKey.isEmpty())
+            return;
+
+        FirebaseDatabase.getInstance()
+                .getReference("Users")
+                .child(userKey)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        String name =
+                                snapshot.child("name").getValue(String.class);
+
+                        String phone =
+                                snapshot.child("phone").getValue(String.class);
+
+                        tvUserName.setText(name);
+
+                        tvUserPhone.setText(phone);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+
+                });
 
     }
 
@@ -311,6 +363,35 @@ public class User_Maps_Activity extends AppCompatActivity {
             return;
         }
 
+        // -----------------------------
+        // Load User Profile into Drawer
+        // -----------------------------
+        FirebaseDatabase.getInstance()
+                .getReference("Users")
+                .child(userKey)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        String name = snapshot.child("name").getValue(String.class);
+                        String phone = snapshot.child("phone").getValue(String.class);
+
+                        if (txtDrawerName != null)
+                            txtDrawerName.setText(name != null ? name : "User");
+
+                        if (txtDrawerPhone != null)
+                            txtDrawerPhone.setText(phone != null ? phone : "");
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+
+        // -----------------------------
+        // One Device Login Listener
+        // -----------------------------
         sessionRef =
                 FirebaseDatabase.getInstance()
                         .getReference("Users")
@@ -325,9 +406,7 @@ public class User_Maps_Activity extends AppCompatActivity {
                             @NonNull DataSnapshot snapshot) {
 
                         String serverToken =
-                                snapshot.getValue(
-                                        String.class
-                                );
+                                snapshot.getValue(String.class);
 
                         String localToken =
                                 getSharedPreferences(
@@ -349,8 +428,6 @@ public class User_Maps_Activity extends AppCompatActivity {
                         }
 
                         if (!serverToken.equals(localToken)) {
-
-                            isLoggingOut = true;
 
                             Toast.makeText(
                                     User_Maps_Activity.this,
@@ -390,9 +467,7 @@ public class User_Maps_Activity extends AppCompatActivity {
                     }
                 };
 
-        sessionRef.addValueEventListener(
-                sessionListener
-        );
+        sessionRef.addValueEventListener(sessionListener);
     }
 
 
@@ -511,6 +586,8 @@ public class User_Maps_Activity extends AppCompatActivity {
                     map.setVisibility(View.VISIBLE);
                     noDriverLayout.setVisibility(View.GONE);
 
+                    txtStatus.setText("Live Tracking");
+
                     drawRoute(userPoint, nearestPoint);
                     zoomToFit(userPoint, nearestPoint);
                     updateUI(nearestSnap, minDistance);
@@ -521,16 +598,16 @@ public class User_Maps_Activity extends AppCompatActivity {
                     map.setVisibility(View.GONE);
                     noDriverLayout.setVisibility(View.VISIBLE);
 
-                    txtStatus.setText("No drivers available");
+
+                    txtStatus.setText("No driver available");
 
                     txtDriverName.setText("Driver: --");
                     txtVehicleNumber.setText("Vehicle: --");
                     txtCapacity.setText("Capacity: --");
                     txtLastUpdated.setText("Updated: --");
-
                     distanceText.setText("--");
                     timeText.setText("--");
-
+                    txtSpeed.setText("--");
                     driverPhone = "";
 
                     routeMain = null;
@@ -728,7 +805,6 @@ public class User_Maps_Activity extends AppCompatActivity {
 
             try {
 
-                android.util.Log.d("OSRM_URL", url);
 
                 java.net.HttpURLConnection conn =
                         (java.net.HttpURLConnection)
@@ -749,10 +825,7 @@ public class User_Maps_Activity extends AppCompatActivity {
 
                 int responseCode = conn.getResponseCode();
 
-                android.util.Log.d(
-                        "OSRM_HTTP",
-                        "Response Code = " + responseCode
-                );
+
 
                 if (responseCode != 200) {
 
@@ -778,10 +851,7 @@ public class User_Maps_Activity extends AppCompatActivity {
 
                 reader.close();
 
-                android.util.Log.d(
-                        "OSRM_RESPONSE",
-                        response.toString()
-                );
+
 
                 org.json.JSONObject json =
                         new org.json.JSONObject(
@@ -819,10 +889,6 @@ public class User_Maps_Activity extends AppCompatActivity {
                     );
                 }
 
-                android.util.Log.d(
-                        "OSRM_POINTS",
-                        "Points = " + points.size()
-                );
 
                 runOnUiThread(() -> {
 
@@ -877,11 +943,6 @@ public class User_Maps_Activity extends AppCompatActivity {
 
             } catch (Exception e) {
 
-                android.util.Log.e(
-                        "OSRM_ERROR",
-                        e.getMessage(),
-                        e
-                );
 
                 runOnUiThread(() ->
                         drawDottedRoute(user, driver));
@@ -962,7 +1023,7 @@ public class User_Maps_Activity extends AppCompatActivity {
         String vehicle = snap.child("vehicleNumber").getValue(String.class);
         Integer capacity = snap.child("capacity").getValue(Integer.class);
         Long updated = snap.child("lastUpdated").getValue(Long.class);
-
+        Integer speed = snap.child("speed").getValue(Integer.class);
         driverPhone = snap.child("phone").getValue(String.class);
 
         if (driverPhone == null) {
@@ -981,6 +1042,13 @@ public class User_Maps_Activity extends AppCompatActivity {
         } else {
             txtLastUpdated.setText("Updated: --");
         }
+
+        if (speed != null) {
+            txtSpeed.setText(speed + " km/h");
+        } else {
+            txtSpeed.setText("--");
+        }
+
         double km = distanceMeters / 1000.0;
 
         distanceText.setText(
@@ -989,12 +1057,59 @@ public class User_Maps_Activity extends AppCompatActivity {
                         : String.format("%.2f km", km)
         );
 
-        double speed = km < 1 ? 20.0 : 30.0;
-        int eta = (int) ((km / speed) * 60);
 
-        timeText.setText("" + Math.max(1, eta) + " min");
+
+        int eta;
+
+        if (speed != null && speed > 0) {
+
+            eta = (int) ((km / speed) * 60);
+
+        } else {
+
+            // Fallback if speed is unavailable or zero
+            eta = (int) ((km / 30.0) * 60);
+        }
+
+        timeText.setText(Math.max(1, eta) + " min");
 
         txtStatus.setText("Nearest Driver Selected");
+    }
+
+    private void logoutUser() {
+
+
+        SharedPreferences prefs =
+                getSharedPreferences("app", MODE_PRIVATE);
+
+        String userKey =
+                prefs.getString("userKey", "");
+
+        if (!userKey.isEmpty()) {
+
+            FirebaseDatabase.getInstance()
+                    .getReference("Users")
+                    .child(userKey)
+                    .child("sessionToken")
+                    .setValue("");
+        }
+
+        prefs.edit().clear().apply();
+
+        Intent intent =
+                new Intent(
+                        User_Maps_Activity.this,
+                        User_Login_Activity.class
+                );
+
+        intent.setFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK
+        );
+
+        startActivity(intent);
+
+        finish();
     }
 
 @Override

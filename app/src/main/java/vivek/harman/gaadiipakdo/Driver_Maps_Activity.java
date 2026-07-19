@@ -577,6 +577,8 @@ public class Driver_Maps_Activity extends AppCompatActivity {
         double lng =
                 location.getLongitude();
 
+        float speed = Math.max(0, location.getSpeed() * 3.6f);
+
         GeoPoint current =
                 new GeoPoint(lat, lng);
 
@@ -612,6 +614,8 @@ public class Driver_Maps_Activity extends AppCompatActivity {
 
         mapData.put("lat", lat);
         mapData.put("lng", lng);
+
+        mapData.put("speed", Math.round(speed));
 
         mapData.put("isOnline", true);
 

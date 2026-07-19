@@ -293,10 +293,10 @@ public class User_Login_Activity extends AppCompatActivity {
 
             if (task.isSuccessful()) {
 
-                boolean found = false;
+                boolean phoneFound = false;
+                boolean loginSuccess = false;
 
-                for (DataSnapshot snapshot :
-                        task.getResult().getChildren()) {
+                for (DataSnapshot snapshot : task.getResult().getChildren()) {
 
                     String dbPhone =
                             snapshot.child("phone")
@@ -307,60 +307,76 @@ public class User_Login_Activity extends AppCompatActivity {
                                     .getValue(String.class);
 
                     if (dbPhone != null &&
-                            dbPassword != null &&
-                            dbPhone.equals(phone) &&
-                            dbPassword.equals(pass)) {
+                            dbPhone.equals(phone)) {
 
-                        found = true;
+                        phoneFound = true;
 
-                        String sessionToken =
-                                java.util.UUID.randomUUID().toString();
+                        if (dbPassword != null &&
+                                dbPassword.equals(pass)) {
 
-                        snapshot.getRef()
-                                .child("sessionToken")
-                                .setValue(sessionToken)
-                                .addOnSuccessListener(unused -> {
+                            loginSuccess = true;
 
-                                    SharedPreferences prefs =
-                                            getSharedPreferences(
-                                                    "app",
-                                                    MODE_PRIVATE
-                                            );
+                            String sessionToken =
+                                    java.util.UUID.randomUUID().toString();
 
-                                    prefs.edit().clear().apply();
+                            snapshot.getRef()
+                                    .child("sessionToken")
+                                    .setValue(sessionToken)
+                                    .addOnSuccessListener(unused -> {
 
-                                    SharedPreferences.Editor editor =
-                                            prefs.edit();
+                                        SharedPreferences prefs =
+                                                getSharedPreferences(
+                                                        "app",
+                                                        MODE_PRIVATE
+                                                );
 
-                                    editor.putBoolean("isLoggedIn", true);
-                                    editor.putString("role", "user");
-                                    editor.putString("phone", phone);
-                                    editor.putString("sessionToken", sessionToken);
-                                    editor.putString("userKey", snapshot.getKey());
+                                        prefs.edit().clear().apply();
 
-                                    editor.apply();
+                                        SharedPreferences.Editor editor =
+                                                prefs.edit();
 
-                                    Intent intent =
-                                            new Intent(
-                                                    User_Login_Activity.this,
-                                                    User_Maps_Activity.class
-                                            );
+                                        editor.putBoolean("isLoggedIn", true);
+                                        editor.putString("role", "user");
+                                        editor.putString("phone", phone);
+                                        editor.putString("sessionToken", sessionToken);
+                                        editor.putString("userKey", snapshot.getKey());
 
-                                    startActivity(intent);
-                                    finish();
-                                });
+                                        editor.apply();
 
-                        break;
+                                        Intent intent =
+                                                new Intent(
+                                                        User_Login_Activity.this,
+                                                        User_Maps_Activity.class
+                                                );
+
+                                        startActivity(intent);
+
+                                        finish();
+                                    });
+
+                            break;
+                        }
                     }
                 }
 
-                if (!found) {
+                if (!loginSuccess) {
 
-                    Toast.makeText(
-                            User_Login_Activity.this,
-                            "Invalid Phone or Password",
-                            Toast.LENGTH_SHORT
-                    ).show();
+                    if (!phoneFound) {
+
+                        Toast.makeText(
+                                User_Login_Activity.this,
+                                "Phone number not registered",
+                                Toast.LENGTH_SHORT
+                        ).show();
+
+                    } else {
+
+                        Toast.makeText(
+                                User_Login_Activity.this,
+                                "Incorrect password",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
                 }
 
             } else {

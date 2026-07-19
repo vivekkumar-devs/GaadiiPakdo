@@ -200,21 +200,29 @@ public class Driver_Register_Activity extends AppCompatActivity {
         });
     }
 
+    private String getPasswordError(String password) {
+
+        if (password.length() < 8) {
+            return "Password must be at least 8 characters";
+        }
+
+        if (!password.matches(".*[A-Z].*")) {
+            return "Add at least one uppercase letter";
+        }
+
+        if (!password.matches(".*\\d.*")) {
+            return "Add at least one number";
+        }
+
+        if (!password.matches(".*[^a-zA-Z0-9].*")) {
+            return "Add at least one special character";
+        }
+
+        return null;
+    }
+
     private boolean isValidPassword(String password) {
-
-        boolean hasUppercase =
-                password.matches(".*[A-Z].*");
-
-        boolean hasNumber =
-                password.matches(".*\\d.*");
-
-        boolean hasSpecial =
-                password.matches(".*[^a-zA-Z0-9].*");
-
-        return password.length() >= 8
-                && hasUppercase
-                && hasNumber
-                && hasSpecial;
+        return getPasswordError(password) == null;
     }
 
     // =========================
@@ -320,14 +328,16 @@ public class Driver_Register_Activity extends AppCompatActivity {
             return;
         }
 
-        if (!isValidPassword(pass)) {
+        String passwordError = getPasswordError(pass);
+
+        if (passwordError != null) {
 
             etPassword.requestFocus();
 
             Toast.makeText(
                     this,
-                    "Password doesn't meet requirements",
-                    Toast.LENGTH_LONG
+                    passwordError,
+                    Toast.LENGTH_SHORT
             ).show();
 
             return;
