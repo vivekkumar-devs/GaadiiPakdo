@@ -3,7 +3,8 @@
 <!-- ========================================================= -->
 
 <p align="center">
- <img width="1536" height="1024" alt="githubposter" src="https://github.com/user-attachments/assets/f325155b-bc7b-46cb-9103-3006f90e83d9" />
+ <img width="1536" height="1024" alt="newpostergithub" src="https://github.com/user-attachments/assets/9570064e-41e4-4b46-9785-c49fb1c4b3d3" />
+
 
 </p>
 
